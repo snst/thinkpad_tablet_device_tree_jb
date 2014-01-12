@@ -4,6 +4,13 @@ $(call inherit-product, build/target/product/full_base.mk)
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
+
+## Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
+# Inherit some common stuff.
+$(call inherit-product, build/target/product/full_base_telephony.mk)
+
 # Inherit device configuration
 $(call inherit-product, device/LENOVO/Indigo/device_Indigo.mk)
 

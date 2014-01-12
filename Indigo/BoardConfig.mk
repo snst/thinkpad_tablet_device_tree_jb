@@ -15,7 +15,7 @@ COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 -include vendor/LENOVO/Indigo/BoardConfigVendor.mk
 
 TARGET_ARCH := arm
-
+TARGET_CPU_SMP := true
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RECOVERYIMAGE := true

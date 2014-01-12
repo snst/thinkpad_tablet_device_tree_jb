@@ -1,6 +1,3 @@
 #
 # system.prop for Indigo
 #
-
-3g.module = none
-persist.sys.usb.config = mtp,adb

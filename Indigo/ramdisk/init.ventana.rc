@@ -8,8 +8,10 @@ on init
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
+    mkdir /storage/sdcard1 0777 system system
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
+    export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
 
@@ -18,24 +20,8 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-
-    # Enable secondary storage
-    export SECONDARY_STORAGE /storage/sdcard1
-
-#    export EXTERNAL_STORAGE /storage/sdcard0
-#    export SECONDARY_STORAGE /storage/sdcard1
-#    mkdir /storage 0050 system 1028
-#    mkdir /storage/primary 0555 root root
-#    mkdir /storage/primary/legacy 0555 root root
-#    mkdir /storage/sdcard0 0000 system system
-#    symlink /storage/sdcard0 /sdcard
-#    symlink /storage/sdcard0 /mnt/sdcard
-
-    # make the pathes for the external media mounts
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/sdcard2 0000 system system
-    mkdir /storage/usbdisk0 0000 system system
-    mkdir /storage/usbdisk1 0000 system system
+    symlink /sdcard/usbStorage/sda1 /storage/usbdisk0
+    symlink /sdcard/usbStorage/sda1 /mnt/usbdisk0
 
 # Compal Earvin 20110823 begin
     mkdir /mnt/pia 0666 system system
@@ -71,6 +57,11 @@ on fs
     chmod 775 /mnt/pia
     mount ext4 /dev/block/mmcblk0p9 /mnt/persdata wait noatime nosuid nodev journal_async_commit,data=writeback,nodelalloc,errors=panic
 # Compal Earvin 20110823 end
+
+
+    mount vfat /dev/block/mmcblk1p1 /storage/sdcard1 wait noatime nosuid nodev flush
+    setprop EXTERNAL_STORAGE_STATE mounted
+
 setprop ro.crypto.fuse_sdcard true
 
 # Compal mini 20110524 begin
@@ -87,7 +78,7 @@ on post-fs-data
     mkdir /data/nvcam 0777 system system
     chown dhcp dhcp /data/misc/dhcp
 
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    # we will remap this as /mnt/shell/emulated with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
 

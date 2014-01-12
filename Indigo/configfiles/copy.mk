@@ -1,4 +1,7 @@
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/etc/apns-conf.xml:system/etc/apns-conf.xml \
+    $(LOCAL_PATH)/etc/eri.xml:system/etc/eri.xml \
+    $(LOCAL_PATH)/etc/eri_sprint.xml:system/etc/eri_sprint.xml \
     $(LOCAL_PATH)/bin/modelid_cfg.sh:system/bin/modelid_cfg.sh \
     $(LOCAL_PATH)/etc/asound.conf:system/etc/asound.conf \
     $(LOCAL_PATH)/etc/audio_policy.conf:system/etc/audio_policy.conf \

@@ -1,5 +1,0 @@
-#
-# system.prop for Indigo
-#
-
-persist.sys.usb.config = mtp,adb

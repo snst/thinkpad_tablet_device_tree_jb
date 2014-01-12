@@ -11,10 +11,12 @@ endif
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    3g.module = f5521gw \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.sf.lcd_density=160 \
     ro.opengles.version=131072 \
+    persist.sys.usb.config = mtp,adb \
     touch.enable=1
 
 PRODUCT_PACKAGES += \

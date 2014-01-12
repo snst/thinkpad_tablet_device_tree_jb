@@ -1,3 +1,5 @@
+lib/hw/gps.f5521gw.so
+lib/libmbm-ril.so
 bin/TrackLibApp
 bin/brcm_patchram_plus
 bin/glgps_nvidiaTegra2android
